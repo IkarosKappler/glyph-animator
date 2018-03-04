@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Glyph Animator</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Content Description" />
+    <meta name="keywords" content="any, keywords, you, want" />
+    <meta name="author" content="Ikaros Kappler" />
+    <meta name="date" content="2015-04-22" />
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/opentype.min.js"></script>
+    <!-- <script src="lib/vivus.min.js"></script> -->
+    <script src="js/main.js"></script>
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    
+  </head>
+
+  <body>
+    <svg id="svg-canvas" xmlns="http://www.w3.org/2000/svg" version="1.1" width="600" height="400" viewBox="0 0 600 400">
+      <title>Test</title>
+      <description>Descr</description>
+      <defs>
+	<style>
+	  path.animatable {
+	  stroke : black;
+	  }
+	  path.with-fill {
+	  fill : red;
+	  }
+	  path.no-fill {
+	  fill : none;
+	  }
+	  path.thick-stroke {
+	  stroke-width : 3px;
+	  }
+	  path.thin-stroke {
+	  stroke-with : 1px;
+	  }
+	</style>
+      </defs>
+      <rect x="0" y="0" width="600" height="400" fill="#e0e0ff" stroke="none" />
+    </svg>
+    <canvas id="canvas" width="600" height="400"></canvas>
+
+  </body>
+</html>
