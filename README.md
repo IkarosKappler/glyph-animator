@@ -15,3 +15,6 @@ Using SVG paths, javascript and some jquery.
 See live demo at [int2byte.de](http://www.int2byte.de/public/glyph-animator/main.html "Glyph Animator Demo").
 
 Find code at [Github](https://github.com/IkarosKappler/glyph-animator "Glyph Animator Code at Github").
+
+
+Go to [Opentype.js](https://github.com/nodebox/opentype.js "Opentype.js") for the font reader library.
