@@ -4,3 +4,7 @@ svg#svg-canvas {
     height : 400px;
     background-color : #e0e0ff;
 }
+
+input[type=text] {
+    width : 50px;
+}
