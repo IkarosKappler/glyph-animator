@@ -18,3 +18,8 @@ Find code at [Github](https://github.com/IkarosKappler/glyph-animator "Glyph Ani
 
 
 Go to [Opentype.js](https://github.com/nodebox/opentype.js "Opentype.js") for the font reader library.
+
+
+
+
+Font files are from [FontSquirrel.com](https://www.fontsquirrel.com "fontsquirrel.com")

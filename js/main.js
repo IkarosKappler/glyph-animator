@@ -49,12 +49,10 @@ $( document ).ready( function() {
     function animateBox( boxPaths, duration_ms, options ) {
 	var startTime = Date.now();
 	var endTime   = startTime + duration_ms;
-	//console.log( 'startTime=' + startTime + ', endTime=' + endTime + ', duration_ms=' + duration_ms );
 	function bStep() {
 	    var currentTime = Date.now();
 	    var amount = 100 * ((currentTime-startTime)/duration_ms);
-	    amount = Math.max(0, Math.min(100,amount));
-	    //console.log( 'currentTime=' + currentTime + ', duration=' + (currentTime-startTime) + ' , amount=' + amount );	    
+	    amount = Math.max(0, Math.min(100,amount));	    
 	    for( var i in boxPaths ) {
 		var $path = $( boxPaths[i] );
 		$path.css( {
@@ -62,7 +60,6 @@ $( document ).ready( function() {
 		    'stroke-dashoffset' : (25+amount)+'%'  // Will be invisible at the end of animation
 		} );
 	    }
-
 	    if( amount < 100 )
 		window.requestAnimationFrame( bStep );
 	    else if( options && options.complete )
@@ -77,7 +74,9 @@ $( document ).ready( function() {
 	/**
 	 * Load the font file using opentype.js
 	 **/
-	opentype.load( 'fonts/Courier Prime.ttf', function(err, font) {
+	var fontFile = $('select#font-file').val();
+	//opentype.load( 'fonts/Courier Prime.ttf', function(err, font) {
+	opentype.load( 'fonts/'+fontFile, function(err, font) {
 	    if( err ) {
 		alert('Font could not be loaded: ' + err);
 	    } else {
@@ -97,8 +96,8 @@ $( document ).ready( function() {
 		$( 'g#main-group' ).empty();
 		
 		// Generate new paths
-		var path1 = font.getPath(text1, 0, 200, 288);
-		var path2 = font.getPath(text2, 0, 200, 288);
+		var path1 = font.getPath(text1, 50, 250, 288);
+		var path2 = font.getPath(text2, 50, 250, 288);
 		
 		var bounds1 = path1.getBoundingBox();
 		var bounds2 = path2.getBoundingBox();
@@ -131,7 +130,7 @@ $( document ).ready( function() {
 				       'z',
 				       'animatable thin-stroke no-fill'
 				     );
-		// Create a circle path from bounding box (starting from tip middle)
+		// Create a circle path from bounding box (starting from tip middle, moving counter clockwise)
 		var circle = createPath( 'M '+(bounds.x1+bounds.width*0.5)+','+bounds.y1+' ' + 
 
 					 // Upper left curve

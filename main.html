@@ -22,6 +22,12 @@
     <div>
       From <input type="text" id="input1" placeholder="Input A" value="1" />
       to <input type="text" id="input2" placeholder="Input B" value="2" />
+      Font
+      <select id="font-file">
+	<option value="Amatic-Bold.ttf">Amatic Bold</option>
+	<option value="Courier Prime.ttf" selected>Courier Prime</option>
+	<option value="Junicode.ttf">Junicode</option>
+      </select>
       <button type="button" id="animate">Go</button>
     </div>
     <svg id="svg-canvas" xmlns="http://www.w3.org/2000/svg" version="1.1" width="600" height="400" viewBox="0 0 600 400">
@@ -50,6 +56,8 @@
       <rect x="0" y="0" width="600" height="400" fill="#f0f0ff" stroke="none" />
       <g id="main-group"></g>
     </svg>
+
+
 
   </body>
 </html>
