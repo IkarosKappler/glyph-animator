@@ -15,13 +15,11 @@ $( document ).ready( function() {
      **/
     function animatePaths( forwardPaths, rewindPaths, duration_ms, options ) {
 	var startTime = Date.now();
-	var endTime   = startTime + duration_ms;
-	//console.log( 'startTime=' + startTime + ', endTime=' + endTime + ', duration_ms=' + duration_ms );
+	//var endTime   = startTime + duration_ms;
 	function aStep() {
 	    var currentTime = Date.now();
 	    var amount = 100 * ((currentTime-startTime)/duration_ms);
 	    amount = Math.max(0, Math.min(100,amount));
-	    //console.log( 'currentTime=' + currentTime + ', duration=' + (currentTime-startTime) + ' , amount=' + amount );  
 	    for( var i in forwardPaths ) {
 		var $path = $( forwardPaths[i] );
 		$path.css( {
@@ -95,7 +93,7 @@ $( document ).ready( function() {
 		}
 		
 		
-		// Clear old paths
+		// Clear old paths at beginning of animation
 		$( 'g#main-group' ).empty();
 		
 		// Generate new paths
@@ -119,8 +117,7 @@ $( document ).ready( function() {
 		var svg = document.getElementById('main-group');
 		function createPath( pathData, classList ) {
 		    var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-		    p.classList = classList; //'animatable';
-		    //p.setAttribute('d','M 100 100 L 100 200 L 150 200 z');
+		    p.setAttribute('class',classList);
 		    p.setAttribute('d', pathData  );
 		    svg.appendChild( p );
 		    return p;
@@ -180,8 +177,14 @@ $( document ).ready( function() {
 
 		var $btn = $('button#animate');
 		var animationTerminated = function() {
-		    console.log( 'Animation terminated.' );
+		    console.log( 'Animation terminated. Starting reverse.' );
 		    $btn.prop('disabled',false);
+
+		    // Animate all paths with some delay (reverse)
+		    var delay = 1000;
+		    window.setTimeout( function() { animatePaths([],[p2],2000); },  delay+500 );
+		    window.setTimeout( function() { animatePaths([p1],[],2000,{ complete : function() { console.log('Animation terminated.'); } }); }, delay+1500 );
+		    window.setTimeout( function() { animateBox([rect,circle],2000); }, delay+1000 );
 		}
 		$btn.prop('disabled',true);
 		
