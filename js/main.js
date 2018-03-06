@@ -177,12 +177,11 @@ $( document ).ready( function() {
 		var $btn = $('button#animate');
 		var animationTerminated = function() {
 		    console.log( 'Animation terminated. Starting reverse.' );
-		    $btn.prop('disabled',false);
 
 		    // Animate all paths with some delay (reverse)
 		    var delay = 1000;
 		    window.setTimeout( function() { animatePaths([],[p2],2000); },  delay+500 );
-		    window.setTimeout( function() { animatePaths([p1],[],2000,{ complete : function() { console.log('Animation terminated.'); } }); }, delay+1500 );
+		    window.setTimeout( function() { animatePaths([p1],[],2000,{ complete : function() { console.log('Animation terminated.'); $btn.prop('disabled',false); } }); }, delay+1500 );
 		    window.setTimeout( function() { animateBox([rect,circle],2000); }, delay+1000 );
 		}
 		$btn.prop('disabled',true);
